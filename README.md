@@ -1,24 +1,20 @@
-# README
+# 概要
+## 環境
+ruby 2.6.5
+mysql 5.6.51
+rails 6.0.0
+#### バッチ処理について
+wheneverでcronを設定して実行しております。
+コマンドは以下になります。
+```
+$ bundle exec rails r Batch::Qiita.run
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# こだわった点
+## バッチ処理
+最大で、100記事×100ページ=10,000記事分のデータとユーザー情報を保存するため、バルクインサートのメソッドを使用してバッチ処理の実行時間を短縮するようにしました。
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 一覧表示画面
+「今日」、「３日間」、「全期間」の３つのタブを設置しましたが、それぞれ独立した更新ボタンがあり、検索条件を含めたまま表示されるようにしました。
+また、それぞれ人気順として番号を振りました。
