@@ -1,9 +1,16 @@
 <div class="container-lg">
   <h4 class="text-center py-3 font-weight-bold">Qiita記事（ランキング）</h4>
+  <!-- 検索 -->
+  <%= search_form_for @q, url: root_path, html: {class: "text-center mb-3"} do |f| %>
+    <%= f.text_field :title_cont, placeholder: 'タイトルで検索', class: "font-weight-bold fs-09 title-form border-0 py-2 px-5 rounded-pill text-center" %>
+    <%= f.submit '検索', class: "d-none" %>
+  <% end %>
+  <!-- 一覧 -->
   <div id="allListWrap" class="d-flex flex-wrap">
     <%= render partial: 'list', locals: { items: @all_items } %>
   </div>
-  <div class="py-5 text-center">
-    <%= link_to "もっと見る", root_path(page: "2"), id: "loadLinkAll", class: "btn btn-success", remote: true %>
+  <!-- 読み込みボタン -->
+  <div id="loadLinkAll" class="py-5 text-center">
+    <%= link_to "もっと見る", root_path(page: "2", q: { title_cont: @q.title_cont }), class: "btn btn-success", remote: true %>
   </div>
 </div>

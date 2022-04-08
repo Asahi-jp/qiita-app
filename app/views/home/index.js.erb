@@ -6,7 +6,11 @@ $("#allListWrap").append(
   ) %>"
 );
 <%# ボタンのパラメーターを変更 %>
-$("#loadLinkAll").attr("href", "/?page=<%= @page_num.to_i + 1 %>")
+$("#loadLinkAll").html(
+  "<%= j(
+    link_to "もっと見る", root_path(page: @page_num.to_i + 1, q: { title_cont: @q.title_cont }), id: "loadLinkAll", class: "btn btn-success", remote: true
+  ) %>"
+);
 
 <%# 番号を付与 %>
 $(function() {
