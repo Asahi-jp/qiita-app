@@ -1,0 +1,56 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// フォントクラスを追加
+.fs-06 {
+  font-size: 0.6em;
+}
+.fs-07 {
+  font-size: 0.7em;
+}
+.fs-08 {
+  font-size: 0.8em;
+}
+.fs-09 {
+  font-size: 0.9em;
+}
+.fs-1 {
+  font-size: 1.0em;
+}
+
+// タイトルフォーム
+.title-form {
+  &:focus {
+    outline: 2px solid green !important;
+  }
+}
+
+// リンク
+.text-link {
+  color: #4aac00;
+  display: block;
+  font-weight: bold;
+  &:hover {
+    color: #4aac00;
+    text-decoration: underline currentColor;
+  }
+}
+
+// 番号アイコン
+.number-icon {
+  background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6));
+  color: white;
+  font-size: 0.6em;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
+// ユーザーカード
+.user-card {
+  border-radius: 10px;
+  &:hover{
+    box-shadow: 0 15px 30px -5px rgba(0,0,0,.15), 0 0 5px rgba(0,0,0,.1);
+    transform: translateY(-4px);
+  }
+}
