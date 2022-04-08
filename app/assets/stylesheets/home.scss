@@ -54,3 +54,8 @@
     transform: translateY(-4px);
   }
 }
+
+// ページ表示部分を非表示
+nav.pagination {
+  display: none;
+}

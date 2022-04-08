@@ -1,0 +1,18 @@
+<%# 記事をレンダリング %>
+$("#allListWrap").append(
+  "<%= j(
+    render 'home/list',
+    items: @items
+  ) %>"
+);
+<%# ボタンのパラメーターを変更 %>
+$("#loadLinkAll").attr("href", "/?page=<%= @page_num.to_i + 1 %>")
+
+<%# 番号を付与 %>
+$(function() {
+  let counter = 1;
+  $(".number-icon").each(function(){
+    $(this).text(`No.${counter}`)
+    counter++;
+  });
+});
