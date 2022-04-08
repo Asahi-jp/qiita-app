@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_08_055238) do
+ActiveRecord::Schema.define(version: 2022_04_08_055951) do
+
+  create_table "items", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "user_id", null: false
+    t.string "title", null: false
+    t.integer "reactions_count", null: false
+    t.integer "likes_count", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
 
   create_table "users", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -20,4 +30,5 @@ ActiveRecord::Schema.define(version: 2022_04_08_055238) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "items", "users"
 end
