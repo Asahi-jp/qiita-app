@@ -74,3 +74,7 @@ nav.pagination {
   }
 }
 
+// タブ
+.nav-tabs .nav-link.active {
+  background-color: inherit !important;
+}

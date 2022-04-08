@@ -1,21 +1,61 @@
-<%# 記事をレンダリング %>
-$("#allListWrap").append(
-  "<%= j(
-    render 'home/list',
-    items: @items
-  ) %>"
-);
-<%# ボタンのパラメーターを変更 %>
-$("#loadLinkAll").html(
-  "<%= j(
-    link_to "もっと見る", root_path(page: @page_num.to_i + 1, q: { title_cont: @q.title_cont }), id: "loadLinkAll", class: "btn btn-success", remote: true
-  ) %>"
-);
+<% if @type == "today" %>
+  <%# 記事をレンダリング %>
+  $("#todayListWrap").append(
+    "<%= j(
+      render 'home/list',
+      items: @today_items,
+      type: @type
+    ) %>"
+  );
+  <%# ボタンのパラメーターを変更 %>
+  $("#loadLinkToday").html("<%= j( link_to "もっと見る", root_path(page: @page_num.to_i + 1, type: "today", q: { title_cont: @q.title_cont }), class: "btn btn-success", remote: true ) %>");
 
-<%# 番号を付与 %>
+<% elsif @type == "three_days" %>
+  <%# 記事をレンダリング %>
+  $("#threeDaysListWrap").append(
+    "<%= j(
+      render 'home/list',
+      items: @three_days_items,
+      type: @type
+    ) %>"
+  );
+  <%# ボタンのパラメーターを変更 %>
+  $("#loadLinkThreeDays").html("<%= j( link_to "もっと見る", root_path(page: @page_num.to_i + 1, type: "three_days", q: { title_cont: @q.title_cont }), class: "btn btn-success", remote: true ) %>");
+
+<% else %>
+  <%# 記事をレンダリング %>
+  $("#allListWrap").append(
+    "<%= j(
+      render 'home/list',
+      items: @all_items,
+      type: @type
+    ) %>"
+  );
+  <%# ボタンのパラメーターを変更 %>
+  $("#loadLinkAll").html("<%= j( link_to "もっと見る", root_path(page: @page_num.to_i + 1, type: "all", q: { title_cont: @q.title_cont }), class: "btn btn-success", remote: true ) %>");
+
+<% end %>
+
+
+
+<%# カウンターを追加 %>
 $(function() {
   let counter = 1;
-  $(".number-icon").each(function(){
+  $(".number-icon--today").each(function(){
+    $(this).text(`No.${counter}`)
+    counter++;
+  });
+});
+$(function() {
+  let counter = 1;
+  $(".number-icon--three_days").each(function(){
+    $(this).text(`No.${counter}`)
+    counter++;
+  });
+});
+$(function() {
+  let counter = 1;
+  $(".number-icon--all").each(function(){
     $(this).text(`No.${counter}`)
     counter++;
   });
