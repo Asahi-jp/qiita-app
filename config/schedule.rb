@@ -30,12 +30,7 @@ set :environment, rails_env
 # cronのログの吐き出し場所
 set :output, "#{Rails.root}/log/cron.log"
 
-# 一時間毎に実行
-every :hour do
-  rake 'article_state_check:article_state'
+毎日午前9時に実行
+every 1.day, at: '9:00 am' do
+  runner "Batch::Qiita.run"
 end
-
-# 毎日午前9時に実行
-# every 1.day, at: '9:00 am' do
-#   runner "Batch::Qiita.run"
-# end
