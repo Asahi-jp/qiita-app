@@ -54,3 +54,27 @@
     transform: translateY(-4px);
   }
 }
+
+// ページ表示部分を非表示
+nav.pagination {
+  display: none;
+}
+
+// リストのスタイル
+.card-wrap {
+  width: 100%;
+  padding-bottom: 20px;
+}
+
+// レスポンシブ
+@media screen and (min-width:1024px) {
+  .card-wrap {
+    width: 50%;
+    padding: 10px;
+  }
+}
+
+// タブ
+.nav-tabs .nav-link.active {
+  background-color: inherit !important;
+}
