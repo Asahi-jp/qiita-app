@@ -2,6 +2,7 @@
 <html>
   <head>
     <title>QiitaList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -14,7 +15,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css" rel="stylesheet"/>
   </head>
 
-  <body>
+  <body class="mh-100" style="background-color: #F7F7F7;">
+    <header class="py-3 bg-success">
+      <h3 class="text-center text-white mb-0">QIITALIST</h3>
+    </header>
+
     <%= yield %>
 
     <!-- MDB -->
