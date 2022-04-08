@@ -14,6 +14,9 @@ module QiitaList
     # タイムゾーン
     config.time_zone = 'Tokyo'
 
+    # デフォルトのロケールを日本（ja）に設定
+    config.i18n.default_locale = :ja
+
     # /libファイル以下を自動でロード
     config.autoload_paths += Dir["#{config.root}/lib"]
 
