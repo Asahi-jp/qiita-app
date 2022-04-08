@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_08_060400) do
+ActiveRecord::Schema.define(version: 2022_04_08_060550) do
+
+  create_table "item_tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "item_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_item_tags_on_item_id"
+    t.index ["tag_id"], name: "index_item_tags_on_tag_id"
+  end
 
   create_table "items", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "user_id", null: false
@@ -37,5 +46,7 @@ ActiveRecord::Schema.define(version: 2022_04_08_060400) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "item_tags", "items"
+  add_foreign_key "item_tags", "tags"
   add_foreign_key "items", "users"
 end
